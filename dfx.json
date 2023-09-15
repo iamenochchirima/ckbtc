@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "canisters": {
+    "fortune_cookie_backend": {
+      "type": "motoko",
+      "main": "src/fortune_cookie_backend/main.mo",
+      "dependencies": [
+        "ckbtc_ledger"
+      ]
+    },
+    "ckbtc_ledger" : {
+      "type" : "custom",
+      "candid" : "icrc1.public.did",
+      "wasm" : "icrc1.wasm",
+      "remote": {
+        "candid": "icrc1.public.did",
+        "id": {
+          "ic" : "mxzaz-hqaaa-aaaar-qaada-cai"
+        }
+      }
+    },
+    "fortune_cookie_frontend": {
+      "type": "assets",
+      "source": [
+        "src/fortune_cookie_frontend/assets"
+      ],
+      "dependencies": [
+        "fortune_cookie_backend"
+      ]
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": "",
+      "args": ""
+    }
+  },
+  "output_env_file": ".env"
+}
